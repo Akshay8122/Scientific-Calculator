@@ -4,8 +4,8 @@ body {
   background-image: url(./image/image.jpg);
 }
 #container {
-  width: 390px;
-  height: 580px;
+  width: 400px;
+  height: 500px;
   margin: 20px auto;
 }
 #calculator {
@@ -21,7 +21,7 @@ body {
 
 /*Result items */
 #result {
-  height: 120px;
+  height: 90px;
 }
 #memory {
   text-align: right;
@@ -39,16 +39,16 @@ body {
 }
 #output {
   text-align: right;
-  height: 55px;
+  height: 40px;
   margin: 10px 20px;
-  font-size: 27px;
+  font-size: 25px;
 }
 
 /*row1 css items*/
 #row1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  margin-top: 55px;
+  margin-top: 48px;
   color: #1d1d1d;
 }
 .active-angle {
@@ -61,26 +61,36 @@ body {
   color: #000000;
   font-size: 12px;
   font-weight: 600;
+  height: 30px;
+  width: 60px;
   border: none;
+}
+#row1 button:hover {
+  box-shadow: rgb(60, 60, 60) 1px 0px 4px 1px;
 }
 
 /*row2 css items*/
 #row2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  margin-top: 18px;
+  margin-top: 5px;
 }
 .mfunction {
   color: gray;
   font-size: 12px;
+  height: 30px;
+  width: 60px;
   font-weight: 600;
+}
+#row2 button:hover {
+  box-shadow: rgb(60, 60, 60) 1px 0px 4px 1px;
 }
 
 /*row3 css items*/
 #row3 {
   display: grid;
   grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr;
-  padding: 20px;
+  padding: 15px;
   grid-gap: 1em;
 }
 #fun {
@@ -104,7 +114,9 @@ body {
 input:focus {
   outline: none;
 }
-
+#row3 select:hover {
+  box-shadow: rgb(60, 60, 60) 1px 0px 4px 1px;
+}
 /*row4 css items*/
 #row4 {
   width: 380px;
@@ -118,10 +130,15 @@ input:focus {
   border: blanchedalmond;
 }
 #row4 button:nth-child(35) {
-  background-color: #79baec;
+  background-color: #79baec !important;
 }
 .number {
   color: black;
+  background-color: #ffff;
   font-size: 16px;
   font-weight: 600;
+}
+#row4 button:hover {
+  box-shadow: rgb(60, 60, 60) 1px 0px 4px 1px;
+  background-color: #cdcdcd;
 }

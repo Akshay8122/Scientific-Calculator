@@ -1,276 +1,249 @@
 function getHistory() {
-    return document.getElementById("history-value").innerText;
+  return document.getElementById("history-value").innerText;
 }
 function printHistory(num) {
-    document.getElementById("history-value").innerText = num;
+  document.getElementById("history-value").innerText = num;
 }
 function getOutput() {
-    return document.getElementById("output-value").innerText;
+  return document.getElementById("output-value").innerText;
 }
 function printOutput(num) {
-    if (num == "") {
-        document.getElementById("output-value").innerText = num;
-    } else {
-        document.getElementById("output-value").innerText = getFormat(num);
-    }
+  if (num == "") {
+    y.innerText = num;
+  } else {
+    y.innerText = getFormat(num);
+  }
 }
 function getFormat(num) {
-    if (num == "-") {
-        return "";
-    }
-    var n = Number(num);
-    var value = n.toLocaleString("en");
-    return value;
+  if (num == "-") {
+    return "";
+  }
+  var n = Number(num);
+  var value = n.toLocaleString("en");
+  return value;
 }
 function reverseNumberFormat(num) {
-    return Number(num.replace(/,/g, ""));
+  return Number(num.replace(/,/g, ""));
 }
-
-// All operators
 var operator = document.getElementsByClassName("operator");
 for (var i = 0; i < operator.length; i++) {
-    operator[i].addEventListener("click", function () {
-        if (this.id == "clear") {
-            printHistory("");
-            printOutput("");
-        } else if (this.id == "backspace") {
-            var output = reverseNumberFormat(getOutput()).toString();
-            if (output) {
-                //if output has a value
-                output = output.substring(0, output.length - 1);
-                printOutput(output);
-            }
+  operator[i].addEventListener("click", function () {
+    if (this.id == "clear") {
+      printHistory("");
+      printOutput("");
+    } else if (this.id == "backspace") {
+      var output = reverseNumberFormat(getOutput()).toString();
+      if (output) {
+        output = output.substring(0, output.length - 1);
+        printOutput(output);
+      }
+    } else {
+      var output = getOutput();
+      var history = getHistory();
+      if (output !== "" || output === "" || history !== "") {
+        output = output == "" ? output : reverseNumberFormat(output);
+        history = history + output;
+        if (this.id == "=") {
+          var result = eval(history);
+          printOutput(result);
+          printHistory("");
         } else {
-            var output = getOutput();
-            var history = getHistory();
-            if (output != "" || output == "" || history != "") {
-                output = output == "" ? output : reverseNumberFormat(output);
-                history = history + output;
-                if (this.id == "=") {
-                    var result = eval(history);
-                    printOutput(result);
-                    printHistory("");
-                } else {
-                    history = history + this.id;
-                    printHistory(history);
-                    printOutput("");
-                }
-            }
+          history = history + this.id;
+          printHistory(history);
+          printOutput("");
         }
-    });
+      }
+    }
+  });
 }
-
-// All numbers
-
 var number = document.getElementsByClassName("number");
 for (var i = 0; i < number.length; i++) {
-    number[i].addEventListener("click", function () {
-        var output = reverseNumberFormat(getOutput());
-        if (output != NaN) {
-            //if output is a number
-            output = output + this.id;
-            printOutput(output);
-        }
-    });
+  number[i].addEventListener("click", function () {
+    var output = reverseNumberFormat(getOutput());
+    if (!isNaN(output)) {
+      //if output is a number
+      output = output + this.id;
+      printOutput(output);
+    }
+  });
 }
-
-//Trigonometry Functions
-
+const y = document.getElementById("output-value");
 function sin() {
-    document.getElementById("output-value").innerText = Math.sin(
-        document.getElementById("output-value").innerText
-    );
+  y.innerText = Math.sin(y.innerText);
+  console.log(y);
 }
-
 function cos() {
-    document.getElementById("output-value").innerText = Math.cos(
-        document.getElementById("output-value").innerText
-    );
+  y.innerText = Math.cos(y.innerText);
 }
-
-function sin() {
-    document.getElementById("output-value").innerText = Math.tan(
-        document.getElementById("output-value").innerText
-    );
+function tan() {
+  y.innerText = Math.tan(y.innerText);
 }
-
 function trigo() {
-    var x = document.getElementById("fun");
-    switch (x.value) {
-        case "sin":
-            sin();
-            break;
+  var x = document.getElementById("fun");
+  switch (x.value) {
+    case "sin":
+      sin();
+      break;
 
-        case "cos":
-            cos();
-            break;
+    case "cos":
+      cos();
+      break;
 
-        case "tan":
-            tan();
-            break;
-    }
+    case "tan":
+      tan();
+      break;
+
+    default:
+      y = 0;
+      break;
+  }
 }
-
-//Math & Others Functions
 function floor() {
-    document.getElementById("output-value").innerText = Math.floor(
-        document.getElementById("output-value").innerText
-    );
+  y.innerText = Math.floor(y.innerText);
 }
-
 function ceil() {
-    document.getElementById("output-value").innerText = Math.ceil(
-        document.getElementById("output-value").innerText
-    );
+  y.innerText = Math.ceil(y.innerText);
 }
-
 function mathf() {
-    x = document.getElementById("fun2");
-    switch (x.value) {
-        case "floor":
-            floor();
-            break;
+  x = document.getElementById("fun2");
+  switch (x.value) {
+    case "floor":
+      floor();
+      break;
 
-        case "ceil":
-            ceil();
-            break;
-    }
+    case "ceil":
+      ceil();
+      break;
+
+    default:
+      y = 0;
+      break;
+  }
 }
-
 function exp() {
-    document.getElementById("output-value").innerText = Math.exp(
-        document.getElementById("output-value").innerText
-    );
+  y.innerText = Math.exp(y.innerText);
 }
-
 function PI() {
-    document.getElementById("output-value").innerText = Math.PI;
+  y.innerText = Math.PI;
 }
-
 function E() {
-    document.getElementById("output-value").innerText = Math.E;
+  y.innerText = Math.E;
 }
-
 function pow() {
-    document.getElementById("output-value").innerText = Math.pow(
-        parseInt(document.getElementById("output-value").innerText),
-        2
-    );
-}
-
-function sqrt() {
-    document.getElementById("output-value").innerText = Math.sqrt(
-        document.getElementById("output-value").innerText
-    );
-}
-
-function tanpow() {
-    document.getElementById("output-value").innerText = Math.pow(
-        10,
-        parseInt(document.getElementById("output-value").innerText)
-    );
-}
-
-function twopow() {
-    document.getElementById("output-value").innerText = Math.pow(
-        2,
-        parseInt(document.getElementById("output-value").innerText)
-    );
-}
-
-function log() {
-    document.getElementById("output-value").innerText = Math.log10(
-        document.getElementById("output-value").innerText
-    );
-}
-
-function lnlog() {
-    document.getElementById("output-value").innerText = Math.log(
-        document.getElementById("output-value").innerText
-    );
-}
-
-function rational() {
-    document.getElementById("output-value").innerText =
-        1 / parseInt(document.getElementById("output-value").innerText);
-}
-
-function factorial(n = document.getElementById("output-value").innerText) {
-    let answer = 1;
-    if (n == 0 || n == 1) {
-        return answer;
+  if (y.innerText !== "0" && y.innerText !== "") {
+    if (random.innerText == "x2") {
+      y.innerText = Math.pow(parseInt(y.innerText), 2);
     } else {
-        for (var i = n; i >= 1; i--) {
-            answer = answer * i;
-        }
-        printOutput(answer);
+      y.innerText = Math.pow(parseInt(y.innerText), 3);
     }
+  }
 }
-
-function abc() {
-    var a = (document.getElementById("output-value").innerText += "**");
+function sqrt() {
+  if (y.innerText !== "0" && y.innerText !== "") {
+    if (randomvar.innerHTML == "<sup>2</sup>√x") {
+      y.innerText = Math.sqrt(y.innerText);
+    } else {
+      y.innerText = Math.cbrt(y.innerText);
+    }
+  }
+}
+function tanpow() {
+  if (y.innerText !== "0" && y.innerText !== "") {
+    if (randompow.innerHTML == "10<sup>x</sup>") {
+      y.innerText = Math.pow(10, parseInt(y.innerText));
+    } else {
+      y.innerText = Math.pow(2, parseInt(y.innerText));
+    }
+  }
+}
+function log() {
+  if (y.innerText !== "0" && y.innerText !== "") {
+    y.innerText = Math.log10(y.innerText);
+  }
+}
+function lnlog() {
+  if (y.innerText !== "0" && y.innerText !== "") {
+    if (randomlog.innerText == "ln") {
+      y.innerText = Math.log(y.innerText);
+    } else {
+      y.innerText = Math.E ** y.innerText;
+    }
+  }
+}
+function rational() {
+  if (y.innerText !== "0" && y.innerText !== "") {
+    y.innerText = 1 / parseInt(y.innerText);
+  }
+}
+function factorial(n = y.innerText) {
+  let answer = 1;
+  if (n == 0 || n == 1) {
+    return answer;
+  } else {
+    for (var i = n; i >= 1; i--) {
+      answer = answer * i;
+    }
+    printOutput(answer);
+  }
+}
+function exponentiation() {
+  if (y.innerText !== "0" && y.innerText !== "") {
+    var a = (y.innerText += "**");
     printOutput("");
     printHistory(a);
+  }
 }
-
-function expo() {
-    var x = document.getElementById("output-value").innerText;
+function scientific_nota() {
+  if (y.innerText !== "0" && y.innerText !== "") {
+    var x = y.innerText;
     var a = parseInt(x).toExponential();
     printOutput("");
     printHistory(a);
+  }
 }
-
-// Memory functions
 function modx() {
-    document.getElementById("output-value").innerText =
-        0 - parseInt(document.getElementById("output-value").innerText);
+  if (y.innerText !== "0" && y.innerText !== "") {
+    y.innerText = 0 - parseInt(y.innerText);
+  }
 }
-
 function ms() {
-    mv.unshift(parseInt(document.getElementById("output-value").innerText));
+  if (y.innerText !== "0" && y.innerText !== "") {
+    mv.unshift(parseInt(y.innerText));
     document.getElementById("memory-value").innerText = mv;
+  }
 }
-
 var mv = [];
 function mp() {
-    if (mv[0]) {
-        document.getElementById("output-value").innerText =
-            mv[0] + parseInt(document.getElementById("output-value").innerText);
-    }
+  if (mv[0]) {
+    y.innerText = mv[0] + parseInt(y.innerText);
+  }
 }
-
 function mm() {
-    if (mv[0]) {
-        document.getElementById("output-value").innerText =
-            mv[0] - parseInt(document.getElementById("output-value").innerText);
-    }
+  if (mv[0]) {
+    y.innerText = mv[0] - parseInt(y.innerText);
+  }
 }
-
 function mc() {
-    document.getElementById("memory-value").innerText = "";
-    mv = [];
+  document.getElementById("memory-value").innerText = "";
+  mv = [];
 }
-
 function mr() {
-    document.getElementById("output-value").innerText += mv[0];
+  if (y.innerText !== "0" && y.innerText !== "") {
+    y.innerText += mv[0];
+  }
 }
-
-// DEG AND RAD
-
 const deg_rad = () => {
-    let val = document.getElementById("deg");
-    let convert = parseInt(document.getElementById("output-value").innerText);
-
-    if (val.innerText == "DEG") {
-        val.innerText = "RAD";
-        document.getElementById("output-value").innerText =
-            convert * (180 / Math.PI);
-        console.log(convert.innerText);
+  var val = document.getElementById("deg");
+  var convert = parseInt(y.innerText);
+  if (y.innerText !== "0" && y.innerText !== "") {
+    if (val.innerText === "DEG") {
+      val.innerText = "RAD";
+      console.log(val.innerText);
+      y.innerText = convert * (180 / Math.PI);
     } else {
-        val.innerText = "DEG";
-
-        document.getElementById("output-value").innerText =
-            convert * (Math.PI / 180);
-        console.log(convert.innerText);
+      val.innerText = "DEG";
+      y.innerText = convert * (Math.PI / 180);
+      console.log(val.innerText);
     }
+  }
 };
