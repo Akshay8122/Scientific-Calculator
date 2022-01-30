@@ -1,3 +1,8 @@
+let random = document.getElementById("x^2");
+let randomvar = document.getElementById("2");
+let randompow = document.getElementById("10x");
+let randomlog = document.getElementById("ln");
+
 function getHistory() {
   return document.getElementById("history-value").innerText;
 }
@@ -247,3 +252,19 @@ const deg_rad = () => {
     }
   }
 };
+let valid = true;
+function ChangeAll() {
+  if (valid) {
+    (random.innerHTML = "x<sup>3</sup>"),
+      (randomvar.innerHTML = "<sup>3</sup>√x"),
+      (randompow.innerHTML = "2<sup>x</sup>"),
+      (randomlog.innerHTML = "e<sup>x</sup>");
+    valid = false;
+  } else {
+    valid = true;
+    (random.innerHTML = "x<sup>2</sup>"),
+      (randomvar.innerHTML = "<sup>2</sup>√x"),
+      (randompow.innerHTML = "10<sup>x</sup>"),
+      (randomlog.innerHTML = "ln");
+  }
+}
