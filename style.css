@@ -1,0 +1,144 @@
+/*General*/
+body {
+  margin: 0;
+  background-image: url(./image/image.jpg);
+}
+#container {
+  width: 400px;
+  height: 500px;
+  margin: 20px auto;
+}
+#calculator {
+  width: 380px;
+  height: auto;
+  background-color: #eaedef;
+  margin: 0 auto;
+  top: 20px;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px 0 #f5f5f5, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*Result items */
+#result {
+  height: 90px;
+}
+#memory {
+  text-align: right;
+  height: 30px;
+  margin: 10px 10px;
+  font-size: 30px;
+}
+#history {
+  text-align: right;
+  height: 20px;
+  margin: 0 20px;
+  padding-top: 20px;
+  font-size: 18px;
+  color: #919191;
+}
+#output {
+  text-align: right;
+  height: 40px;
+  margin: 10px 20px;
+  font-size: 25px;
+}
+
+/*row1 css items*/
+#row1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-top: 48px;
+  color: #1d1d1d;
+}
+.active-angle {
+  background-color: #1d1d1d !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+}
+.dfunction,
+.color {
+  color: #000000;
+  font-size: 12px;
+  font-weight: 600;
+  height: 30px;
+  width: 60px;
+  border: none;
+}
+#row1 button:hover {
+  box-shadow: rgb(60, 60, 60) 1px 0px 4px 1px;
+}
+
+/*row2 css items*/
+#row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-top: 5px;
+}
+.mfunction {
+  color: gray;
+  font-size: 12px;
+  height: 30px;
+  width: 60px;
+  font-weight: 600;
+}
+#row2 button:hover {
+  box-shadow: rgb(60, 60, 60) 1px 0px 4px 1px;
+}
+
+/*row3 css items*/
+#row3 {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr;
+  padding: 15px;
+  grid-gap: 1em;
+}
+#fun {
+  border-style: none;
+  background-color: #eaedef;
+  width: 123px;
+  height: auto;
+}
+#fun2 {
+  border: none;
+  background-color: #eaedef;
+  width: 92px;
+  height: auto;
+}
+#fun1 {
+  border-color: whitesmoke;
+  opacity: 0.7;
+}
+#fun2,
+#fun:focus,
+input:focus {
+  outline: none;
+}
+#row3 select:hover {
+  box-shadow: rgb(60, 60, 60) 1px 0px 4px 1px;
+}
+/*row4 css items*/
+#row4 {
+  width: 380px;
+  height: 270px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 0.2em;
+}
+#row4 button {
+  border-width: thin;
+  border: blanchedalmond;
+}
+#row4 button:nth-child(35) {
+  background-color: #79baec !important;
+}
+.number {
+  color: black;
+  background-color: #ffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+#row4 button:hover {
+  box-shadow: rgb(60, 60, 60) 1px 0px 4px 1px;
+  background-color: #cdcdcd;
+}
