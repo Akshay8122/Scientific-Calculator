@@ -13,14 +13,14 @@ function getOutput() {
   return document.getElementById("output-value")!.innerText;
 }
 function printOutput(num: string) {
-  if (num == "") {
+  if (num === "") {
     display.innerText = num;
   } else {
     display.innerText = getFormat(num);
   }
 }
 function getFormat(num: string) {
-  if (num == "-") {
+  if (num === "-") {
     return "";
   }
   var n = Number(num);
@@ -47,7 +47,7 @@ for (var i = 0; i < operator.length; i++) {
       let output: number | string | boolean = getOutput();
       let history: string = getHistory();
       if (output !== "" || output === "" || history !== "") {
-        output = output == "" ? output : reverseNumberFormat(output);
+        output = output === "" ? output : reverseNumberFormat(output);
         history = history + output;
         if (display.innerText !== "0" && display.innerText !== "") {
           if (temp.id === "=") {
@@ -76,7 +76,6 @@ for (var i = 0; i < number.length; i++) {
     }
   });
 }
-
 let display = document.getElementById("output-value")! as HTMLInputElement;
 function sin() {
   display.innerText = String(Math.sin(Number(display.innerText)));
@@ -87,9 +86,11 @@ function cos() {
 function tan() {
   display.innerText = String(Math.tan(Number(display.innerText)));
 }
+type Value = 'sin' | 'cos' | 'tan';
 function trigo() {
-  let x = document.getElementById("fun")! as HTMLInputElement;
-  switch (x.value) {
+  let newVal = document.getElementById("fun")! as HTMLInputElement;
+  let check: Value = newVal.value as Value;
+  switch (check) {
     case "sin":
       sin();
       break;
@@ -113,9 +114,14 @@ function floor() {
 function ceil() {
   display.innerText = String(Math.ceil(Number(display.innerText)));
 }
+function round() {
+  display.innerText = String(Math.round(Number(display.innerText)));
+}
+type Another = 'floor' | 'ceil' | 'round';
 function mathf() {
-  let check = document.getElementById("fun2")! as HTMLInputElement;
-  switch (check.value) {
+  let action = document.getElementById("fun2")! as HTMLInputElement;
+  let manage: Another = action.value as Another;
+  switch (manage) {
     case "floor":
       floor();
       break;
@@ -123,6 +129,11 @@ function mathf() {
     case "ceil":
       ceil();
       break;
+
+    case "round":
+      round();
+      break;
+
 
     default:
       display.innerText = "0";
@@ -140,7 +151,7 @@ function E() {
 }
 function pow() {
   if (display.innerText !== "0" && display.innerText !== "") {
-    if (random.innerText == "x2") {
+    if (random.innerText === "x2") {
       display.innerText = String(Math.pow(parseInt(display.innerText), 2));
     } else {
       display.innerText = String(Math.pow(parseInt(display.innerText), 3));
@@ -149,7 +160,7 @@ function pow() {
 }
 function sqrt() {
   if (display.innerText !== "0" && display.innerText !== "") {
-    if (randomvar.innerHTML == "<sup>2</sup>√x") {
+    if (randomvar.innerHTML === "<sup>2</sup>√x") {
       display.innerText = String(Math.sqrt(Number(display.innerText)));
     } else {
       display.innerText = String(Math.cbrt(Number(display.innerText)));
@@ -158,7 +169,7 @@ function sqrt() {
 }
 function tanpow() {
   if (display.innerText !== "0" && display.innerText !== "") {
-    if (randompow.innerHTML == "10<sup>x</sup>") {
+    if (randompow.innerHTML === "10<sup>x</sup>") {
       display.innerText = String(Math.pow(10, parseInt(display.innerText)));
     } else {
       display.innerText = String(Math.pow(2, parseInt(display.innerText)));
@@ -172,7 +183,7 @@ function log() {
 }
 function lnlog() {
   if (display.innerText !== "0" && display.innerText !== "") {
-    if (randomlog.innerText == "ln") {
+    if (randomlog.innerText === "ln") {
       display.innerText = String(Math.log(Number(display.innerText)));
     } else {
       display.innerText = String(Math.E ** Number(display.innerText));
@@ -201,7 +212,7 @@ function exponentiation() {
     printHistory(a);
   }
 }
-function scientific_nota() {
+function scientific() {
   if (display.innerText !== "0" && display.innerText !== "") {
     let x: string = display.innerText;
     let a: string = parseInt(x).toExponential();
@@ -258,7 +269,7 @@ const deg_rad = () => {
     }
   }
 };
-let valid: boolean = true;
+let valid = true;
 function ChangeAll() {
   if (valid) {
     (random.innerHTML = "x<sup>3</sup>"),
